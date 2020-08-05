@@ -3,10 +3,6 @@ provider "aws" {
   profile = var.profile
 }
 
-data "aws_iam_role" "api_user" {
-  name = "api_user"
-}
-
 resource "aws_api_gateway_rest_api" "ApiGateway" {
   name        = var.api_name
   description = var.api_description
