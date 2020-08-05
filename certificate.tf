@@ -17,7 +17,6 @@ resource "aws_route53_record" "validation" {
   }
   }
 
-  allow_overwrite = true
   name = each.value.name
   records = [
     each.value.record
@@ -33,6 +32,7 @@ resource "aws_acm_certificate_validation" "validation" {
     aws_acm_certificate.subdomain.domain_name
   ]
   depends_on = [
-    aws_route53_record.validation
+    aws_route53_record.validation,
+    aws_route53_record.proxyRecord
   ]
 }
