@@ -22,3 +22,9 @@ resource "aws_route53_record" "proxyRecord" {
     zone_id = aws_api_gateway_domain_name.proxyDomain.cloudfront_zone_id
   }
 }
+
+resource "aws_api_gateway_base_path_mapping" "mapping" {
+  api_id      = aws_api_gateway_rest_api.ApiGateway.id
+  stage_name  = aws_api_gateway_deployment.ApiDeployment.stage_name
+  domain_name = aws_api_gateway_domain_name.proxyDomain.domain_name
+}
