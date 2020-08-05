@@ -58,6 +58,11 @@ data "aws_route53_zone" "selected" {
 
 resource "aws_acm_certificate" "subdomain" {
   domain_name = "${var.subdomain}.${var.domain}"
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_acm_certificate_validation" "proxyRecordCertValidation" {
