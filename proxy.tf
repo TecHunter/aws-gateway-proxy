@@ -34,7 +34,7 @@ resource "aws_api_gateway_integration" "ApiProxyIntegration" {
   uri                      = "${var.base_url}/{proxy}"
   passthrough_behavior     = "WHEN_NO_MATCH"
   request_parameters       =    {
-    integration.request.path.proxy = "method.request.path.proxy"
+    "integration.request.path.proxy" = "method.request.path.proxy"
   }
 }
 
