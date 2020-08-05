@@ -4,7 +4,7 @@ variable "region" {
 }
 
 variable "profile" {
-  default	= "default"
+  default = "default"
   type = string
 }
 
@@ -23,5 +23,15 @@ variable "api_name" {
 }
 
 variable "api_description" {
+  type = string
+}
+
+variable "domain" {
+  default = "techunter.io"
+  type = string
+}
+
+variable "subdomain" {
+  default = "proxy"
   type = string
 }
