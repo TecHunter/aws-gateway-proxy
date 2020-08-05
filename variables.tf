@@ -14,7 +14,7 @@ variable "stage" {
 }
 
 variable "base_url" {
-  default = "https://registry.npmjs.org/"
+  default = "https://registry.npmjs.org"
   type = string
 }
 

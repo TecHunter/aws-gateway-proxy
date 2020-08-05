@@ -2,6 +2,8 @@
 resource "aws_api_gateway_domain_name" "proxyDomain" {
   certificate_arn = aws_acm_certificate_validation.validation.certificate_arn
   domain_name = aws_acm_certificate.subdomain.domain_name
+  security_policy = "TLS_1_2"
+
   depends_on = [
     # wait for certificate validation
     aws_acm_certificate_validation.validation
