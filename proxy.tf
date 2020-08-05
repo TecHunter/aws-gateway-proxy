@@ -57,18 +57,18 @@ data "aws_route53_zone" "selected" {
 }
 
 resource "aws_acm_certificate" "subdomain" {
-  domain = "${var.subdomain}.${var.domain}"
+  domain_name = "${var.subdomain}.${var.domain}"
 }
 
 resource "aws_acm_certificate_validation" "proxyRecordCertValidation" {
   certificate_arn = aws_acm_certificate.subdomain.arn
   validation_record_fqdns = [
-    aws_acm_certificate.subdomain.domain
+    aws_acm_certificate.subdomain.domain_name
   ]
 }
 
 resource "aws_api_gateway_domain_name" "proxyDomain" {
-  domain_name = aws_acm_certificate.subdomain.domain
+  domain_name = aws_acm_certificate.subdomain.domain_name
   certificate_arn = aws_acm_certificate_validation.proxyRecordCertValidation.certificate_arn
   depends_on = [
     aws_acm_certificate_validation.proxyRecordCertValidation
